@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
         String pass= request.getParameter("Password");
         PrintWriter out = response.getWriter();
 
-        String sql = "SELECT Password, Username FROM User WHERE Username = '" + name + "'";
+        String sql = "SELECT password, username FROM Users WHERE username = '" + name + "'";
 
         try (Connection conn = MySQLJDBCUtil.getConnection();
              Statement stmt  = conn.createStatement();
