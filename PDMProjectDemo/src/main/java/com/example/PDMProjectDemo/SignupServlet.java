@@ -9,21 +9,25 @@ import java.sql.*;
 @WebServlet(name = "SignupServlet", value = "/SignupServlet")
 public class SignupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String sql = "INSERT INTO User ( UserID, Username, Password, Email, PhoneNumber) VALUES(?,?,?,?,?)";
-
-        try (Connection conn = MySQLJDBCUtil.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            // set parameters for statement
-            pstmt.setString(1, request.getParameter("ID"));
-            pstmt.setString(2, request.getParameter("Username"));
-            pstmt.setString(3, request.getParameter("Password"));
-            pstmt.setString(4, request.getParameter("Email"));
-            pstmt.setString(5, request.getParameter("PhoneNumber"));
-
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        MySQLJDBCUtil util = new MySQLJDBCUtil();
+        String username = request.getParameter("Username");
+        String pass = request.getParameter("Password");
+        String fname = request.getParameter("fname");
+        String lname =request.getParameter("lname");
+        String email = request.getParameter("Email");
+        String phone = request.getParameter("PhoneNumber");
+        String day = request.getParameter("day");
+        String month = request.getParameter("month");
+        String year = request.getParameter("year");
+        String data = String.format("'%s','%s','%s','%s','%s','%s','%s/%s/%s',2",fname,lname,username,pass,email,phone,day,month,year);
+        util.ExecuteQueryInsert(data,"Users");
+        PrintWriter out = response.getWriter();
+        out.println("<h1>Your account is ready to use</h1>");
+        try {
+            response.wait(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        response.sendRedirect("index.jsp");
     }
 }

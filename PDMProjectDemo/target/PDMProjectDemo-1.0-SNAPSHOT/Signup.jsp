@@ -1,32 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zxczx
-  Date: 29/4/2021
-  Time: 9:02 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Signup</title>
+    <title>Sign up</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-  <h1>Join us now and buy our overpriced products!</h1>
-  <form action="SignupServlet" method="post" >
-      <label for="ID">ID</label>
-      <input type="text" id="ID" name="ID" placeholder="ID"><br>
-      <label for="Username">Username</label>
-      <input type="text" id="Username" name="Username" placeholder="Username"><br>
-      <label for="Password">Password</label>
-      <input type="text" id="Password" name="Password" placeholder="Password"><br>
-      <label for="PhoneNumber">Phone Number</label>
-      <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber"><br>
-      <label for="Email">Email</label>
-      <input type="Email" id="Email" name="Email" placeholder="Email"><br>
-      <input type="submit">
-      <label for="Login">Already have an account? Login!</label> <br>
-      <input type="submit" id="Login" value="Login" formaction="index.jsp">
-  </form>
+  <div class="loginbox">
+      <img src="${pageContext.request.contextPath}/avatar.png" class="avatar">
+      <form action="SignupServlet" method="post" >
+            <h1>Sign Up</h1>
+            <label for="Firstname">Firstname</label>
+            <input type="text" id="Firstname" name="fname" placeholder="Firstname"><br>
+            <label for="Lastname">Lastname</label>
+            <input type="text" id="Lastname" name="lname" placeholder="Lastname"><br>
+            <label for="Username">Username</label>
+            <input type="text" id="Username" name="Username" placeholder="Username"><br>
+            <label for="Password">Password</label>
+            <input type="password" id="Password" name="Password" placeholder="Password"><br>
+            <label for="PhoneNumber">Phone Number</label>
+            <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber"><br>
+            <label for="Email">Email</label>
+            <input type="Email" id="Email" name="Email" placeholder="Email"><br>
+            <label for="Day">Day</label>
+            <input type="text" id="Day" name="day" placeholder="DD"><br>
+            <label for="Month">Month</label>
+            <input type="text" id="Month" name="month" placeholder="MM"><br>
+            <label for="Year">Year</label>
+            <input type="text" id="Year" name="year" placeholder="YYYY"><br>
+            <input type="submit">
+            <input type="submit" id="Login" value="Login" formaction="index.jsp">
+      </form>
+  </div>
 
   </body>
 </html>
