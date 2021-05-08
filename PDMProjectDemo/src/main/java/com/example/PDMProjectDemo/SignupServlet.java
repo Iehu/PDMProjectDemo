@@ -9,8 +9,10 @@ import java.sql.*;
 @WebServlet(name = "SignupServlet", value = "/SignupServlet")
 public class SignupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         MySQLJDBCUtil util = new MySQLJDBCUtil();
         String username = request.getParameter("Username");
+        String userData = util.ExecuteQueryValue(String.format("SELECT username FROM Users WHERE username='%s' AND roleID='2'",username));
         String pass = request.getParameter("Password");
         String fname = request.getParameter("fname");
         String lname =request.getParameter("lname");
@@ -20,14 +22,14 @@ public class SignupServlet extends HttpServlet {
         String month = request.getParameter("month");
         String year = request.getParameter("year");
         String data = String.format("'%s','%s','%s','%s','%s','%s','%s/%s/%s',2",fname,lname,username,pass,email,phone,day,month,year);
-        util.ExecuteQueryInsert(data,"Users");
-        PrintWriter out = response.getWriter();
-        out.println("<h1>Your account is ready to use</h1>");
-        try {
-            response.wait(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if(!"".equals(userData)){
+            out.println("<html><body>");
+            out.println("<h1> Your username is already exists</h1>");
+            out.println("</body></html>");
         }
-        response.sendRedirect("index.jsp");
+        else {
+            util.ExecuteQueryInsert(data, "Users");
+            response.sendRedirect("/PDMProjectDemo_war_exploded/WelcomeNewbie.jsp");
+        }
     }
 }

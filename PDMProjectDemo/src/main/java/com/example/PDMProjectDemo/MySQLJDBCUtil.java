@@ -57,6 +57,18 @@ public class    MySQLJDBCUtil {
         } catch (SQLException throwables) {
         }
     }
+    public String ExecuteQueryValue(String query){
+        StringBuilder value= new StringBuilder();
+        try(Connection con = MySQLJDBCUtil.getConnection(); Statement stmt = con.createStatement();){
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next()){
+                value.append(rs.getObject(1));
+            }
+        } catch (SQLException throwables){
+
+        }
+        return value.toString();
+    }
 
     
 }

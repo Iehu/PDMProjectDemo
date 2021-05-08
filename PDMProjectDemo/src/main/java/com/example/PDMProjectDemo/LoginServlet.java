@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         String sql = "SELECT password, username FROM Users WHERE username = '" + name + "'";
         String[] query1 = util.ExecuteQuerySignIn(String.format("SELECT username,password,roleID FROM Users WHERE username='%s'",name)).split("\t");
         if(name.equals(query1[0]) && pass.equals(query1[1])&&query1[2].equals("2")){
-            response.sendRedirect("Signup.jsp");
+            response.sendRedirect("index.jsp");
      /*       out.println("<html><body>");
             out.println("<h1> Hello " + query1[2] + ", welcome back!</h1>");
             out.println("</body></html>");*/
