@@ -10,12 +10,19 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     MySQLJDBCUtil util;
+    DateTimeFormatter dtf;
+    LocalDateTime now;
+    public static int orderID;
     public void init() {
         util = new MySQLJDBCUtil();
+        dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        now = LocalDateTime.now();
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
@@ -29,6 +36,8 @@ public class LoginServlet extends HttpServlet {
         System.out.println(name.equals(query1[0]));
         System.out.println(pass.equals(query1[1]));
         if(name.equals(query1[0]) && pass.equals(query1[1])){
+            util.ExecuteQueryInsert(String.format("NULL, '%s',1,1",dtf.format(now)),"Invoice");
+            orderID = Integer.parseInt(util.ExecuteQueryValue("SELECT MAX(orderID) FROM Invoice"));
             response.sendRedirect("page1.jsp");
         }
         else{
