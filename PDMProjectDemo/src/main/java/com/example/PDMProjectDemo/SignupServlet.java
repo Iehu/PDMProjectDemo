@@ -18,10 +18,8 @@ public class SignupServlet extends HttpServlet {
         String lname =request.getParameter("lname");
         String email = request.getParameter("Email");
         String phone = request.getParameter("PhoneNumber");
-        String day = request.getParameter("day");
-        String month = request.getParameter("month");
-        String year = request.getParameter("year");
-        String data = String.format("'%s','%s','%s','%s','%s','%s','%s/%s/%s',2",fname,lname,username,pass,email,phone,day,month,year);
+        String birthdate = request.getParameter("birthdate");
+        String data = String.format("'%s','%s','%s','%s','%s','%s','%s',2",fname,lname,username,pass,email,phone,birthdate);
         if(!"".equals(userData)){
             out.println("<html><body>");
             out.println("<h1> Your username is already exists</h1>");
