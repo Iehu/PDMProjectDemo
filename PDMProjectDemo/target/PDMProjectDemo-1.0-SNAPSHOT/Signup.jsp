@@ -25,8 +25,8 @@
             <input type="text" id="Day" name="day" placeholder="DD"><br>
             <label for="Month">Month</label>
             <input type="text" id="Month" name="month" placeholder="MM"><br>
-            <label for="Year">Year</label>
-            <input type="text" id="Year" name="year" placeholder="YYYY"><br>
+            <label for="Birthdate">Year</label>
+            <input type="text" id="Birthdate" name="birthdate" placeholder="MM/DD/YYYY"><br>
             <input type="submit">
             <input type="submit" id="Login" value="Login" formaction="index.jsp">
       </form>

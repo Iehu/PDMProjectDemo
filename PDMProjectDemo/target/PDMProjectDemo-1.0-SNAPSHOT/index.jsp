@@ -7,7 +7,7 @@
 <body>
     <div class="loginbox">
         <img src="${pageContext.request.contextPath}/avatar.png" class="avatar">
-    <form action="Login-Servlet" method="post">
+    <form action="LoginServlet" method="post">
         <h1>Sign in</h1>
     <label for="Username">Username</label>
     <input type="text" id="Username" name="Username" placeholder="your damn username"> <br/>

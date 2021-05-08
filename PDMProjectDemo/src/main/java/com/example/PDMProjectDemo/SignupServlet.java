@@ -12,14 +12,14 @@ public class SignupServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         MySQLJDBCUtil util = new MySQLJDBCUtil();
         String username = request.getParameter("Username");
-        String userData = util.ExecuteQueryValue(String.format("SELECT username FROM Users WHERE username='%s' AND roleID='2'",username));
+        String userData = util.ExecuteQueryValue(String.format("SELECT username FROM Users WHERE username='%s'",username));
         String pass = request.getParameter("Password");
         String fname = request.getParameter("fname");
         String lname =request.getParameter("lname");
         String email = request.getParameter("Email");
         String phone = request.getParameter("PhoneNumber");
         String birthdate = request.getParameter("birthdate");
-        String data = String.format("'%s','%s','%s','%s','%s','%s','%s',2",fname,lname,username,pass,email,phone,birthdate);
+        String data = String.format("'%s','%s','%s','%s','%s','%s','%s'",fname,lname,username,pass,email,phone,birthdate);
         if(!"".equals(userData)){
             out.println("<html><body>");
             out.println("<h1> Your username is already exists</h1>");

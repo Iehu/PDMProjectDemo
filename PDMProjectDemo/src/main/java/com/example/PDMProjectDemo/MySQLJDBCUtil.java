@@ -52,6 +52,7 @@ public class    MySQLJDBCUtil {
     }
     public void ExecuteQueryInsert(String data, String table) {
         String SQL = String.format("INSERT INTO %s VALUES(%s)", table, data);
+        System.out.println(SQL);
         try (Connection con = MySQLJDBCUtil.getConnection(); Statement stmt = con.createStatement();) {
             stmt.executeQuery(SQL);
         } catch (SQLException throwables) {
