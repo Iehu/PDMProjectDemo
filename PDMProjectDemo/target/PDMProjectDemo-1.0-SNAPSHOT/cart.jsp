@@ -1,4 +1,10 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.example.PDMProjectDemo.MySQLJDBCUtil" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.example.PDMProjectDemo.LoginServlet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="com.microsoft.sqlserver.jdbc.SQLServerDataSource" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 5/11/2021
@@ -64,92 +70,23 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <%
+                            try (Connection con = MySQLJDBCUtil.getConnection(); Statement stmt = con.createStatement();){
+                                ResultSet rs = stmt.executeQuery(String.format("SELECT productname,amount,pr.price, amount*price AS total FROM Payment p,Product pr WHERE p.productID = pr.productID AND orderID=%d",LoginServlet.orderID));
+                                while(rs.next()){
+                                   %>
                         <tr>
-                            <td>
-                                <div class="main">
-                                    <div class="des">
-                                        <p>lorem ipsum</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>$20.00</h6>
-                            </td>
-                            <td>
-                                <div class="counter">
-                                    <i class="fas fa-angle-down"></i>
-                                    <input
-                                            class="input-number"
-                                            type="text"
-                                            value="1"
-                                            min="0"
-                                            max="10"
-                                    />
-                                    <i class="fas fa-angle-up"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>$20.00</h6>
-                            </td>
+                            <td><%=rs.getObject(1)%></td>
+                            <td><%=rs.getObject(3)%></td>
+                            <td><%=rs.getObject(2)%></td>
+                            <td><%=rs.getObject(4)%></td>
                         </tr>
-                        <!----->
-                        <tr>
-                            <td>
-                                <div class="main">
-                                    <div class="des">
-                                        <p>lorem ipsum</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>$20.00</h6>
-                            </td>
-                            <td>
-                                <div class="counter">
-                                    <i class="fas fa-angle-down"></i>
-                                    <input
-                                            class="input-number"
-                                            type="text"
-                                            value="1"
-                                            min="0"
-                                            max="10"
-                                    />
-                                    <i class="fas fa-angle-up"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>$20.00</h6>
-                            </td>
-                        </tr>
-                        <!----->
-                        <tr>
-                            <td>
-                                <div class="main">
-                                    <div class="des">
-                                        <p>lorem ipsum</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>$20.00</h6>
-                            </td>
-                            <td>
-                                <div class="counter">
-                                    <i class="fas fa-angle-down"></i>
-                                    <input
-                                            class="input-number"
-                                            type="text"
-                                            value="1"
-                                            min="0"
-                                            max="10"
-                                    />
-                                    <i class="fas fa-angle-up"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>$20.00</h6>
-                            </td>
-                        </tr>
+                                <%}
+                            }
+                            catch (SQLException en){
+
+                            }
+                        %>
                         <!----->
                         </tbody>
                     </table>
@@ -164,7 +101,19 @@
                     subtotal
                     <span>$60.00</span>
                 </li>
-                <li class="cart-total">Total <span>$60.00</span></li>
+                <%
+                    try (Connection con = MySQLJDBCUtil.getConnection(); Statement stmt = con.createStatement();){
+                        ResultSet rs = stmt.executeQuery(String.format("SELECT invoice_total FROM Invoice WHERE orderID = %d", LoginServlet.orderID));
+                        while(rs.next()){
+                            %>
+                <li class="cart-total">Total <span>$<%=rs.getObject(1)%></span></li>
+                <%
+                        }
+                    }catch(SQLException en){
+
+                }
+                %>
+
             </ul>
             <a href="thank.jsp" class="proceed-btn">Proceed to Checkout</a>
         </div>
