@@ -29,12 +29,9 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
         String name = request.getParameter("Username");
         String pass= request.getParameter("Password");
-        System.out.println(name);
-        System.out.println(pass);
+
         PrintWriter out = response.getWriter();
         String[] query1 = util.ExecuteQuerySignIn(String.format("SELECT username,password FROM Users WHERE username='%s'",name)).split("\t");
-        System.out.println(name.equals(query1[0]));
-        System.out.println(pass.equals(query1[1]));
         if(name.equals(query1[0]) && pass.equals(query1[1])){
             util.ExecuteQueryInsert(String.format("NULL, '%s',1,1",dtf.format(now)),"Invoice");
             orderID = Integer.parseInt(util.ExecuteQueryValue("SELECT MAX(orderID) FROM Invoice"));
