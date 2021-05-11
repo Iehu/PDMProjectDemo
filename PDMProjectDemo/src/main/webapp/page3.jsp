@@ -122,12 +122,13 @@
     </div>
     <div class="thecard4">
         <div class="thefront4">
-            <img src="imgae/Numerical Methods for Engineer.jpg" class="imgae4" alt="" width="600" height="400">
+            <img src="imgae/Crew%20T-Shirt.jpg" class="imgae4" alt="" width="600" height="400">
         </div>
-        <div class="theback4"><h1>Numerical Methods for Engineers(dup)</h1>
-            <h3>Price 45$</h3>
+        <div class="theback4"><h1>Crew T-Shirt</h1>
+            <h3>Price 16$</h3>
             <form action="MainServlet" method="post">
                 <lable for="quanlity">quanlity</lable>
+                <input type="hidden" value="13" name="productID" />
                 <input type="number" name="quanlity" id ="quanlity15">
                 <input type="submit" value="add to cart">
             </form>

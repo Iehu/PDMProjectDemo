@@ -5,6 +5,12 @@
       <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+  <ul>
+      <li><a href="page1.jsp">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+  </ul>
   <div class="loginbox">
       <img src="${pageContext.request.contextPath}/avatar.png" class="avatar">
       <form action="SignupServlet" method="post" >
@@ -21,10 +27,6 @@
             <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber"><br>
             <label for="Email">Email</label>
             <input type="Email" id="Email" name="Email" placeholder="Email"><br>
-            <label for="Day">Day</label>
-            <input type="text" id="Day" name="day" placeholder="DD"><br>
-            <label for="Month">Month</label>
-            <input type="text" id="Month" name="month" placeholder="MM"><br>
             <label for="Birthdate">Year</label>
             <input type="text" id="Birthdate" name="birthdate" placeholder="MM/DD/YYYY"><br>
             <input type="submit">

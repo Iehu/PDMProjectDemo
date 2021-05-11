@@ -5,6 +5,14 @@
     <link rel="stylesheet" type="text/css" href="styleLogin.css">
 </head>
 <body>
+
+<ul>
+    <li><a href="page1.jsp">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+</ul>
+
     <div class="loginbox">
         <img src="${pageContext.request.contextPath}/avatar.png" class="avatar">
     <form action="LoginServlet" method="post">

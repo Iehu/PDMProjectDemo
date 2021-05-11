@@ -54,7 +54,7 @@
 
     </ul>
     <div class="carousel-caption">
-        <a href="cart.jspl">
+        <a href="cart.jsp">
             <button type="button" class ="btn btn-outline-light btn-lg"><h1>payment</h1>
             </button>
         </a>
@@ -83,12 +83,13 @@
     </div>
     <div class="thecard1">
         <div class="thefront1">
-            <img src="imgae/Numerical Methods for Engineer.jpg" class="imgae1" alt="" width="600" height="400">
+            <img src="imgae/Huawei%20Freebuds%204i.jpg" class="imgae1" alt="" width="600" height="400">
         </div>
-        <div class="theback1"><h1>Numerical Methods for Engineer(dup)</h1>
-            <h3>Price 45$</h3>
-            <form action="unused/invoid.php" method="post">
+        <div class="theback1"><h1>Huawei Freebuds 4i</h1>
+            <h3>Price 75$</h3>
+            <form action="MainServlet" method="post">
                 <lable for="quanlity">quanlity</lable>
+                <input type="hidden" value="9" name="productID" />
                 <input type="number" name="quanlity" id ="quanlity7">
                 <input type="submit" value="add to cart">
             </form>
@@ -100,7 +101,7 @@
         </div>
         <div class="theback2"><h1>JBL Quantum 50</h1>
             <h3>Price 30$</h3>
-            <form action="unused/invoid.php" method="post">
+            <form action="MainServlet" method="post">
                 <lable for="quanlity">quanlity</lable>
                 <input type="number" name="quanlity" id ="quanlity8">
                 <input type="hidden" value="8" name="productID" />
@@ -114,7 +115,7 @@
         </div>
         <div class="theback3"><h1>Acer Aspire 5</h1>
             <h3>Price 800$</h3>
-            <form action="unused/invoid.php" method="post">
+            <form action="MainServlet" method="post">
                 <lable for="quanlity">quanlity</lable>
                 <input type="hidden" value="11" name="productID" />
                 <input type="number" name="quanlity" id ="quanlity9">
@@ -128,7 +129,7 @@
         </div>
         <div class="theback4"><h1>Ankle Socks</h1>
             <h3>Price 15$</h3>
-            <form action="unused/invoid.php" method="post">
+            <form action="MainServlet" method="post">
                 <lable for="quanlity">quanlity</lable>
                 <input type="hidden" value="14" name="productID" />
                 <input type="number" name="quanlity" id ="quanlity10">

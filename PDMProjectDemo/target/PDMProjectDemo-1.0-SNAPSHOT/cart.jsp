@@ -97,10 +97,6 @@
     <div class="col-lg-4 offset-lg-4">
         <div class="checkout">
             <ul>
-                <li class="subtotal">
-                    subtotal
-                    <span>$60.00</span>
-                </li>
                 <%
                     try (Connection con = MySQLJDBCUtil.getConnection(); Statement stmt = con.createStatement();){
                         ResultSet rs = stmt.executeQuery(String.format("SELECT invoice_total FROM Invoice WHERE orderID = %d", LoginServlet.orderID));
